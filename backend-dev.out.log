@@ -1,0 +1,277 @@
+
+> e-commerce@1.0.0 dev
+> nodemon backend/server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/OneDrive%20-%20Digital%20Web%20Analytics%20and%20Optimization%20LLP/Documents/EliteMart/EliteMart-main/backend/server.js:111:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
