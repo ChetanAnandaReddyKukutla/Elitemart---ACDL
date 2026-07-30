@@ -1,0 +1,60 @@
+[
+  {
+    "guestId": "guest_test_001",
+    "products": [
+      {
+        "productId": "OX-SH-001",
+        "name": "Classic Oxford Button-Down Shirt",
+        "image": "https://picsum.photos/500/500?random=39",
+        "price": 39.99,
+        "sku": "OX-SH-001",
+        "category": "Top Wear",
+        "brand": "Urban Threads",
+        "currencyCode": "USD",
+        "size": "M",
+        "color": "Red",
+        "quantity": 1
+      }
+    ],
+    "totalPrice": 39.99
+  },
+  {
+    "user": "c520c0aa-2f31-4eba-aea4-5301052490b2",
+    "guestId": "guest_1780300460376",
+    "products": [
+      {
+        "productId": "SLIM-SH-002",
+        "name": "Slim-Fit Stretch Shirt",
+        "image": "https://picsum.photos/500/500?random=41",
+        "price": 29.99,
+        "sku": "SLIM-SH-002",
+        "category": "Top Wear",
+        "brand": "Modern Fit",
+        "currencyCode": "USD",
+        "size": "M",
+        "color": "Burgundy",
+        "quantity": 3
+      }
+    ],
+    "totalPrice": 89.97
+  },
+  {
+    "guestId": "guest_1780313533065",
+    "products": [
+      {
+        "productId": "TW-W-003",
+        "name": "Casual T-Shirt",
+        "image": "https://picsum.photos/500/500?random=31",
+        "price": 25,
+        "sku": "TW-W-003",
+        "category": "Top Wear",
+        "brand": "ComfyTees",
+        "currencyCode": "USD",
+        "size": "XL",
+        "color": "White",
+        "quantity": 1
+      }
+    ],
+    "totalPrice": 25
+  }
+]

@@ -1,0 +1,124 @@
+[
+  {
+    "_id": "0cc5aea7-a9a8-442a-bb45-7ce8f55c2a74",
+    "user": "8a1f72ba-1bd2-4303-a930-f4b9d7679084",
+    "orderItems": [
+      {
+        "productId": "OX-SH-001",
+        "color": "Red",
+        "price": 39.99,
+        "sku": "OX-SH-001",
+        "category": "Top Wear",
+        "brand": "Urban Threads",
+        "currencyCode": "USD",
+        "quantity": 1,
+        "name": "Classic Oxford Button-Down Shirt",
+        "image": "https://picsum.photos/500/500?random=39",
+        "size": "M"
+      }
+    ],
+    "shippingAddress": {
+      "postalCode": "12345",
+      "country": "Testland",
+      "address": "1 Test Street",
+      "city": "Test City"
+    },
+    "paymentMethod": "Paypal",
+    "totalPrice": 39.99,
+    "isPaid": true,
+    "paidAt": "2026-06-01T09:18:47.966Z",
+    "isDelivered": false,
+    "paymentStatus": "paid",
+    "paymentDetails": {
+      "id": "PAYID-LOCAL",
+      "status": "COMPLETED"
+    },
+    "status": "Processing",
+    "createdAt": "2026-06-01T09:18:48.015Z",
+    "updatedAt": "2026-06-01T09:18:48.015Z"
+  },
+  {
+    "_id": "deed8c49-2a88-45d1-9a59-e559c6069660",
+    "user": "c520c0aa-2f31-4eba-aea4-5301052490b2",
+    "orderItems": [
+      {
+        "productId": "SLIM-SH-002",
+        "name": "Slim-Fit Stretch Shirt",
+        "image": "https://picsum.photos/500/500?random=41",
+        "price": 29.99,
+        "sku": "SLIM-SH-002",
+        "category": "Top Wear",
+        "brand": "Modern Fit",
+        "currencyCode": "USD",
+        "size": "M",
+        "color": "Burgundy",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "firstName": "Chetan",
+      "lastName": "Reddy",
+      "address": "Hydraguda , piller numbeer 143",
+      "city": "Hyderabad",
+      "postalCode": "500048",
+      "country": "India",
+      "phone": "1234567890"
+    },
+    "paymentMethod": "Paypal",
+    "totalPrice": 29.99,
+    "isPaid": true,
+    "paidAt": "2026-06-01T09:31:57.229Z",
+    "isDelivered": false,
+    "paymentStatus": "paid",
+    "paymentDetails": {
+      "id": "LOCAL-1780306317166",
+      "status": "COMPLETED",
+      "source": "local-test"
+    },
+    "status": "Processing",
+    "createdAt": "2026-06-01T09:31:57.260Z",
+    "updatedAt": "2026-06-01T09:31:57.260Z"
+  },
+  {
+    "_id": "a85e5a47-7a1b-4377-af30-1e17c453435b",
+    "user": "c520c0aa-2f31-4eba-aea4-5301052490b2",
+    "orderItems": [
+      {
+        "productId": "SLIM-SH-002",
+        "name": "Slim-Fit Stretch Shirt",
+        "image": "https://picsum.photos/500/500?random=41",
+        "price": 29.99,
+        "sku": "SLIM-SH-002",
+        "category": "Top Wear",
+        "brand": "Modern Fit",
+        "currencyCode": "USD",
+        "size": "M",
+        "color": "Burgundy",
+        "quantity": 3
+      }
+    ],
+    "shippingAddress": {
+      "firstName": "Chetan",
+      "lastName": "Reddy",
+      "address": "Hydraguda , piller numbeer 143",
+      "city": "Hyderabad",
+      "postalCode": "500048",
+      "country": "India",
+      "phone": "1234567890"
+    },
+    "paymentMethod": "Paypal",
+    "totalPrice": 89.97,
+    "isPaid": true,
+    "paidAt": "2026-06-01T09:33:12.311Z",
+    "isDelivered": false,
+    "paymentStatus": "paid",
+    "paymentDetails": {
+      "id": "LOCAL-1780306392308",
+      "status": "COMPLETED",
+      "source": "local-test"
+    },
+    "status": "Processing",
+    "createdAt": "2026-06-01T09:33:12.326Z",
+    "updatedAt": "2026-06-01T09:33:12.326Z"
+  }
+]
