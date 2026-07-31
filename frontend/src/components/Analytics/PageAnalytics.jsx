@@ -7,7 +7,7 @@ import {
   enableDelegatedClickTracking,
   setAnalyticsContext,
   trackPageLoad,
-} from "../../utils/analytics";
+} from "../../utils/analytics.js";
 
 const PageAnalytics = () => {
   const location = useLocation();

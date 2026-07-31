@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { buildProduct } from "../../utils/analytics";
+import { buildProduct } from "../../utils/analytics.js";
 
 const NewArrivals = () => {
   const scrollRef = useRef(null);

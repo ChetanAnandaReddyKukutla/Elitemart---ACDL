@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import { buildProduct } from "../../utils/analytics"
+import { buildProduct } from "../../utils/analytics.js"
 const ProductGrid = ({products, loading, error}) => {
   const productList = Array.isArray(products) ? products : [];
   if(loading){

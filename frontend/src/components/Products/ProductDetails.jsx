@@ -13,7 +13,7 @@ import {
   pushDataLayerEvent,
   trackAddToCart,
   trackProductPageLoad,
-} from "../../utils/analytics";
+} from "../../utils/analytics.js";
 
 const ProductDetails = ({ productId }) => {
   const { id } = useParams();

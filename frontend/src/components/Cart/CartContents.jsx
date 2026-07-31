@@ -8,7 +8,7 @@ import {
 import {
   buildProduct,
   trackRemoveFromCart,
-} from "../../utils/analytics";
+} from "../../utils/analytics.js";
 
 const CartContents = ({ cart, userId, guestId }) => {
   const dispatch = useDispatch();

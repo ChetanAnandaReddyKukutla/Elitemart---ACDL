@@ -3,7 +3,7 @@ import { HiMagnifyingGlass, HiMiniXMark } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchProductsByFilters, setFilters } from "../../redux/slices/productsSlice";
-import { trackSearchSubmit } from "../../utils/analytics";
+import { trackSearchSubmit } from "../../utils/analytics.js";
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);

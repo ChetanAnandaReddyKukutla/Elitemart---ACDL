@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../redux/slices/cartSlice";
-import { trackPurchase } from "../utils/analytics";
+import { trackPurchase } from "../utils/analytics.js";
 
 const OrderConfirmationPage = () => {
   const dispatch = useDispatch();

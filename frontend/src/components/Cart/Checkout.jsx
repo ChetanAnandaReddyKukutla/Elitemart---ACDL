@@ -12,7 +12,7 @@ import {
   trackOrderReview,
   trackPaymentSelection,
   pushDataLayerEvent,
-} from "../../utils/analytics";
+} from "../../utils/analytics.js";
 
 const Checkout = () => {
   const navigate = useNavigate();

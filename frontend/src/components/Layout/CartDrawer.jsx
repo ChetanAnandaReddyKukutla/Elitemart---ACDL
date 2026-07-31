@@ -3,7 +3,7 @@ import { HiMiniXMark } from "react-icons/hi2";
 import CartContents from "../Cart/CartContents";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { trackCartView } from "../../utils/analytics";
+import { trackCartView } from "../../utils/analytics.js";
 
 const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
   const navigate = useNavigate();
