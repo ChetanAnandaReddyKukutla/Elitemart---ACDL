@@ -6,6 +6,7 @@ import {
   updateProduct,
 } from "../../redux/slices/productsSlice";
 import axios from "axios";
+import { apiUrl } from "../../config/api";
 
 const EditProductPage = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const EditProductPage = () => {
     try {
       setUploading(true);
       const data = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
+        apiUrl("/api/upload"),
         formData,
         {
           headers: {

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { buildProduct } from "../../utils/analytics.js";
+import { apiUrl } from "../../config/api";
 
 const NewArrivals = () => {
   const scrollRef = useRef(null);
@@ -19,7 +20,7 @@ const NewArrivals = () => {
     const fetchNewArrivals = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/products/new-arrivals`
+          apiUrl("/api/products/new-arrivals")
         );
         setNewArrivals(Array.isArray(response.data) ? response.data : []);
       } catch (error) {

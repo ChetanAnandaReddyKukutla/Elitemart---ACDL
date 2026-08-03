@@ -9,6 +9,7 @@ import FeaturesSection from "../components/Products/FeaturesSection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsByFilters } from "../redux/slices/productsSlice";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Home = () => {
     const fetchBestSellerProduct = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/products/best-seller`
+          apiUrl("/api/products/best-seller")
         );
         setBestSellerProduct(response.data);
       } catch (error) {

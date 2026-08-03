@@ -6,6 +6,7 @@ import { createCheckout } from "../../redux/slices/checkoutSlice";
 import { logout } from "../../redux/slices/authSlice";
 import axios from "axios";
 import { toast } from "sonner";
+import { API_BASE_URL, apiUrl, isLocalBackend } from "../../config/api";
 import {
   buildCustomer,
   trackCheckoutStart,
@@ -25,7 +26,6 @@ const Checkout = () => {
   const cartProducts = Array.isArray(cart?.products) ? cart.products : [];
   const [checkoutId, setCheckoutId] = useState(null);
   const [checkoutSubmitError, setCheckoutSubmitError] = useState("");
-  const isLocalBackend = import.meta.env.VITE_BACKEND_URL?.includes("localhost");
   const checkoutStartTracked = useRef(false);
   const [shippingAddress, setShippingAddress] = useState({
     firstName: "",
@@ -117,7 +117,7 @@ const Checkout = () => {
   const handlePaymentSuccess = async (details) => {
     try {
       await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/checkout/${checkoutId}/pay`,
+        apiUrl(`/api/checkout/${checkoutId}/pay`),
         { paymentStatus: "paid", paymentDetails: details },
         {
           headers: {
@@ -151,9 +151,7 @@ const Checkout = () => {
   const handleFinalizeCheckout = async (checkoutId) => {
     try {
       await axios.post(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/api/checkout/${checkoutId}/finalize`,
+        apiUrl(`/api/checkout/${checkoutId}/finalize`),
         {},
         {
           headers: {
