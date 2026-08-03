@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiUrl } from "../../config/api";
 
 const getAuthErrorMessage = (error) =>
   error?.response?.data?.message ||
@@ -31,7 +32,7 @@ export const loginUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users/login`,
+        apiUrl("/api/users/login"),
         userData
       );
       localStorage.setItem("userInfo", JSON.stringify(response.data.user));
@@ -49,7 +50,7 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users/register`,
+        apiUrl("/api/users/register"),
         userData
       );
       localStorage.setItem("userInfo", JSON.stringify(response.data.user));

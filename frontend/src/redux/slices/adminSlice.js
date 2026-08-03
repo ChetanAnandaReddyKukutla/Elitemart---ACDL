@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiUrl } from "../../config/api";
 
 // Fetch all users (admin only)
 export const fetchUsers = createAsyncThunk("admin/fetchUsers", async () => {
   const response = await axios.get(
-    `${import.meta.env.VITE_BACKEND_URL}/api/admin/users`,
+    apiUrl("/api/admin/users"),
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("userToken")}`,
@@ -20,7 +21,7 @@ export const addUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/admin/users`,
+        apiUrl("/api/admin/users"),
         userData,
         {
           headers: {
@@ -41,7 +42,7 @@ export const updateUser = createAsyncThunk(
   async ({ id, name, email, role }, { rejectWithValue }) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/admin/users/${id}`,
+        apiUrl(`/api/admin/users/${id}`),
         { name, email, role },
         {
           headers: {
@@ -62,7 +63,7 @@ export const deleteUser = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/admin/users/${id}`,
+        apiUrl(`/api/admin/users/${id}`),
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("userToken")}`,
