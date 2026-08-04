@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiUrl } from "../../config/api";
 
 const getCheckoutErrorMessage = (error) => {
   const data = error?.response?.data;
@@ -20,7 +21,7 @@ export const createCheckout = createAsyncThunk(
   async (checkoutdata, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/checkout`,
+        apiUrl("/api/checkout"),
         checkoutdata,
         {
           headers: {

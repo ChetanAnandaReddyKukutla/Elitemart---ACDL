@@ -4,6 +4,7 @@ import signup from "../assets/register.webp";
 import { registerUser } from "../redux/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { mergeCart } from "../redux/slices/cartSlice";
+import { isLocalBackend } from "../config/api";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +14,6 @@ const Signup = () => {
   const location = useLocation();
   const { user, guestId,loading,error } = useSelector((state) => state.auth);
   const { cart } = useSelector((state) => state.cart);
-  const isLocalBackend = import.meta.env.VITE_BACKEND_URL?.includes("localhost");
 
   //Get redirect parameter and check if it's checkout or something else
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";

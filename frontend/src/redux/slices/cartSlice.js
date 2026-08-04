@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiUrl } from "../../config/api";
 
 const getCartErrorMessage = (error, fallback = "Cart request failed") =>
   error?.response?.data?.message ||
@@ -32,7 +33,7 @@ export const fetchCart = createAsyncThunk(
   async ({ userId, guestId }, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cart`,
+        apiUrl("/api/cart"),
         {
           params: { userId, guestId },
         }
@@ -54,7 +55,7 @@ export const addToCart = createAsyncThunk(
   ) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cart`,
+        apiUrl("/api/cart"),
         {
           productId,
           quantity,
@@ -81,7 +82,7 @@ export const updateCartItemQuantity = createAsyncThunk(
   ) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cart`,
+        apiUrl("/api/cart"),
         {
           productId,
           quantity,
@@ -107,7 +108,7 @@ export const removeFromCart = createAsyncThunk(
   async ({ productId, guestId, userId, color, size }, { rejectWithValue }) => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cart`,
+        apiUrl("/api/cart"),
         {
           data: { productId, guestId, userId, color, size },
         }
@@ -128,7 +129,7 @@ export const mergeCart = createAsyncThunk(
     try {
 
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cart/merge`,
+        apiUrl("/api/cart/merge"),
         {
           guestId,
           user,
