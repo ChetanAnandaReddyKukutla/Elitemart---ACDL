@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import ProductGrid from "./ProductGrid";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductDetails,
@@ -10,14 +10,17 @@ import {
 import { addToCart } from "../../redux/slices/cartSlice";
 import {
   buildProduct,
-  pushDataLayerEvent,
   trackAddToCart,
-  trackProductPageLoad,
+  trackPageLoad,
+  buildPage,
+  buildCustomer,
+  trackLinkClick,
 } from "../../utils/analytics.js";
 
 const ProductDetails = ({ productId }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const location = useLocation();
   const { selectedProduct, loading, error, similarProducts } = useSelector(
     (state) => state.products
   );
@@ -65,20 +68,26 @@ const ProductDetails = ({ productId }) => {
 
   useEffect(() => {
     if (!selectedProduct) return;
+    if (productId) return;
     const nextProductKey = selectedProduct._id || selectedProduct.id || productFetchId;
     if (productPageLoadKey.current === nextProductKey) return;
     productPageLoadKey.current = nextProductKey;
 
-    trackProductPageLoad({
-      product: {
+    trackPageLoad({
+      page: buildPage(location.pathname, location.search),
+      custData: buildCustomer(user),
+      product: buildProduct({
         ...selectedProduct,
         selectedSize: Array.isArray(selectedProduct.sizes)
           ? selectedProduct.sizes[0]
           : "",
+        selectedColor: Array.isArray(selectedProduct.colors)
+          ? selectedProduct.colors[0]
+          : "",
         quantity: 1,
-      },
+      }),
     });
-  }, [productFetchId, selectedProduct]);
+  }, [productFetchId, productId, selectedProduct, user, location.pathname, location.search]);
 
   const handleQuantityChange = (action) => {
     if (action === "plus") setSelectedQuantity((prev) => prev + 1);
@@ -99,7 +108,7 @@ const ProductDetails = ({ productId }) => {
     dispatch(
       addToCart({
         productId: productFetchId,
-        quantity:selectedQuantity,
+        quantity: selectedQuantity,
         size,
         color,
         guestId,
@@ -111,8 +120,8 @@ const ProductDetails = ({ productId }) => {
         trackAddToCart({
           product: {
             ...selectedProduct,
-            size,
-            color,
+            selectedSize: size,
+            selectedColor: color,
             quantity: selectedQuantity,
           },
         });
@@ -149,13 +158,14 @@ const ProductDetails = ({ productId }) => {
                 }`}
                 onClick={() => {
                   setMainImage(image.url);
-                  pushDataLayerEvent({
-                    event: "linkClick",
-                    product: buildProduct({
+                  trackLinkClick({
+                    eventName: "view product",
+                    product: {
                       ...selectedProduct,
                       selectedSize,
+                      selectedColor,
                       quantity: selectedQuantity,
-                    }),
+                    },
                     linkInfo: {
                       linkName: image.altText || selectedProduct.name || "product image",
                       linkType: "product image",
@@ -188,13 +198,14 @@ const ProductDetails = ({ productId }) => {
                 }`}
                 onClick={() => {
                   setMainImage(image.url);
-                  pushDataLayerEvent({
-                    event: "linkClick",
-                    product: buildProduct({
+                  trackLinkClick({
+                    eventName: "view product",
+                    product: {
                       ...selectedProduct,
                       selectedSize,
+                      selectedColor,
                       quantity: selectedQuantity,
-                    }),
+                    },
                     linkInfo: {
                       linkName: image.altText || selectedProduct.name || "product image",
                       linkType: "product image",
@@ -226,13 +237,14 @@ const ProductDetails = ({ productId }) => {
                     key={color}
                     onClick={() => {
                       setSelectedColor(color);
-                      pushDataLayerEvent({
-                        event: "linkClick",
-                        product: buildProduct({
+                      trackLinkClick({
+                        eventName: "color selection",
+                        product: {
                           ...selectedProduct,
                           selectedSize,
+                          selectedColor: color,
                           quantity: selectedQuantity,
-                        }),
+                        },
                         linkInfo: {
                           linkName: color,
                           linkType: "product option",
@@ -263,13 +275,14 @@ const ProductDetails = ({ productId }) => {
                     key={size}
                     onClick={() => {
                       setSelectedSize(size);
-                      pushDataLayerEvent({
-                        event: "linkClick",
-                        product: buildProduct({
+                      trackLinkClick({
+                        eventName: "size selection",
+                        product: {
                           ...selectedProduct,
                           selectedSize: size,
+                          selectedColor,
                           quantity: selectedQuantity,
-                        }),
+                        },
                         linkInfo: {
                           linkName: size,
                           linkType: "product option",
@@ -320,10 +333,12 @@ const ProductDetails = ({ productId }) => {
               data-analytics-product={JSON.stringify(
                 buildProduct({
                   ...selectedProduct,
-                  selectedSize,
+                  selectedSize: selectedSize || sizes[0] || "",
+                  selectedColor: selectedColor || colors[0] || "",
                   quantity: selectedQuantity,
                 })
               )}
+                data-analytics-skip="true"
             >
               {isButtonDisabled ? "Adding..." : "ADD TO CART"}
             </button>

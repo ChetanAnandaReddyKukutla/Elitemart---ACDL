@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PayPalButton from "./PayPalButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,13 +6,9 @@ import { createCheckout } from "../../redux/slices/checkoutSlice";
 import { logout } from "../../redux/slices/authSlice";
 import axios from "axios";
 import { toast } from "sonner";
-import { API_BASE_URL, apiUrl, isLocalBackend } from "../../config/api";
+import { apiUrl } from "../../config/api";
 import {
-  buildCustomer,
-  trackCheckoutStart,
-  trackOrderReview,
-  trackPaymentSelection,
-  pushDataLayerEvent,
+  trackLinkClick,
 } from "../../utils/analytics.js";
 
 const Checkout = () => {
@@ -26,7 +22,6 @@ const Checkout = () => {
   const cartProducts = Array.isArray(cart?.products) ? cart.products : [];
   const [checkoutId, setCheckoutId] = useState(null);
   const [checkoutSubmitError, setCheckoutSubmitError] = useState("");
-  const checkoutStartTracked = useRef(false);
   const [shippingAddress, setShippingAddress] = useState({
     firstName: "",
     lastName: "",
@@ -44,13 +39,6 @@ const Checkout = () => {
     }
   }, [cartProducts.length, loading, navigate]);
 
-  useEffect(() => {
-    if (!checkoutStartTracked.current && cartProducts.length > 0) {
-      trackCheckoutStart({ cart });
-      checkoutStartTracked.current = true;
-    }
-  }, [cart, cartProducts.length]);
-
   const handleCreateCheckout = async (e) => {
     e.preventDefault();
     setCheckoutSubmitError("");
@@ -64,6 +52,16 @@ const Checkout = () => {
     }
 
     if (cartProducts.length > 0) {
+      trackLinkClick({
+        eventName: "continue to payment",
+        linkInfo: {
+          linkName: "continue to payment",
+          linkType: "form interaction",
+          linkPosition: "checkout shipping form",
+          linkURL: window.location.href,
+        },
+      });
+
       try {
         const checkout = await dispatch(
           createCheckout({
@@ -79,23 +77,6 @@ const Checkout = () => {
         }
 
         setCheckoutId(checkout._id);
-        pushDataLayerEvent({
-          event: "linkClick",
-          custData: buildCustomer(user),
-          shipping: {
-            shippingMethod: "standard",
-            shippingCountry: shippingAddress.country || "unknown",
-            shippingCity: shippingAddress.city || "unknown",
-          },
-          linkInfo: {
-            linkName: "shipping selected",
-            linkType: "checkout step",
-            linkPosition: "checkout shipping form",
-            linkURL: window.location.href,
-          },
-        });
-        trackPaymentSelection({ paymentMethod: "Paypal" });
-        trackOrderReview();
       } catch (error) {
         const message =
           error?.message || "Unable to continue to payment. Please try again.";
@@ -309,6 +290,7 @@ const Checkout = () => {
                 data-analytics-name="continue to payment"
                 data-analytics-type="form interaction"
                 data-analytics-position="checkout shipping form"
+                data-analytics-skip="true"
                 className="w-full bg-black text-white py-3 rounded disabled:cursor-not-allowed disabled:bg-gray-400"
               >
                 {checkoutLoading ? "Continuing..." : "Continue to Payment"}

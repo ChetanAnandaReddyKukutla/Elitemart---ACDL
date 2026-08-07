@@ -4,13 +4,13 @@ import { TbBrandMeta } from "react-icons/tb";
 import { IoLogoInstagram } from "react-icons/io";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FiPhoneCall } from "react-icons/fi";
-import { pushDataLayerEvent } from "../../utils/analytics.js";
+import { trackLinkClick } from "../../utils/analytics.js";
 
 const Footer = () => {
   const handleNewsletterSubmit = (event) => {
     event.preventDefault();
-    pushDataLayerEvent({
-      event: "linkClick",
+    trackLinkClick({
+      eventName: "newsletter subscribe",
       linkInfo: {
         linkName: "newsletter subscribe",
         linkType: "form interaction",
