@@ -26,17 +26,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize
+dotenv.config({ path: path.join(__dirname, "../.env") });
 dotenv.config({ path: path.join(__dirname, ".env") });
-
-// Prefer the actual launch environment so local development does not inherit
-// a production flag from the checked-in .env file.
-const runtimeEnv = process.env.NODE_ENV || "development";
-process.env.NODE_ENV = runtimeEnv;
-process.env.ENV = runtimeEnv;
-const clientUrl =
-  runtimeEnv === "production"
-    ? process.env.CLIENT_URL || "https://elitemart.up.railway.app"
-    : "http://localhost:3000";
 
 const app = express();
 
@@ -45,7 +36,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: clientUrl,
+    origin: process.env.CLIENT_URL || "http://localhost:3000",
     credentials: true,
   })
 );
@@ -68,7 +59,7 @@ app.use(
         ],
         connectSrc: [
           "'self'",
-          clientUrl,
+          process.env.CLIENT_URL || "http://localhost:3000",
         ],
         objectSrc: ["'none'"],
         upgradeInsecureRequests: [],
@@ -105,7 +96,7 @@ app.get("/{*any}", (req, res) => {
 // Start Server
 const PORT = process.env.PORT || 5000;
 const startServer = async () => {
-  const isProduction = runtimeEnv === "production";
+  const isProduction = process.env.NODE_ENV === "production";
 
   try {
     await connectDB();
@@ -113,7 +104,7 @@ const startServer = async () => {
     console.error("Database connection failed:", error.message);
 
     if (isProduction) {
-      console.error("Backend startup aborted because MongoDB is unavailable.");
+      console.error("Backend startup failed in production mode.");
       process.exit(1);
     }
 
