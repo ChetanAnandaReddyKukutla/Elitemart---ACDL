@@ -87,7 +87,8 @@ const TestPaymentPage = () => {
         JSON.stringify(confirmedOrder)
       );
       navigate("/order-confirmation");
-    } catch (error)      const message =
+    } catch (error) {
+      const message =
         error?.response?.data?.message ||
         error?.response?.data?.error ||
         error?.message ||
