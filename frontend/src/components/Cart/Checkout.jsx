@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PayPalButton from "./PayPalButton";
 import { useDispatch, useSelector } from "react-redux";
-import { createCheckout } from "../../redux/slices/checkoutSlice";
+import { createCheckout, setCheckout } from "../../redux/slices/checkoutSlice";
 import { logout } from "../../redux/slices/authSlice";
 import axios from "axios";
 import { toast } from "sonner";
-import { apiUrl } from "../../config/api";
+import { apiUrl, isLocalBackend } from "../../config/api";
 import {
-  trackLinkClick,
+  buildCustomer,
+  trackCheckoutStart,
+  trackOrderReview,
+  trackPaymentSelection,
+  pushDataLayerEvent,
 } from "../../utils/analytics.js";
 
 const Checkout = () => {
@@ -22,6 +26,8 @@ const Checkout = () => {
   const cartProducts = Array.isArray(cart?.products) ? cart.products : [];
   const [checkoutId, setCheckoutId] = useState(null);
   const [checkoutSubmitError, setCheckoutSubmitError] = useState("");
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const checkoutStartTracked = useRef(false);
   const [shippingAddress, setShippingAddress] = useState({
     firstName: "",
     lastName: "",
@@ -39,6 +45,13 @@ const Checkout = () => {
     }
   }, [cartProducts.length, loading, navigate]);
 
+  useEffect(() => {
+    if (!checkoutStartTracked.current && cartProducts.length > 0) {
+      trackCheckoutStart({ cart });
+      checkoutStartTracked.current = true;
+    }
+  }, [cart, cartProducts.length]);
+
   const handleCreateCheckout = async (e) => {
     e.preventDefault();
     setCheckoutSubmitError("");
@@ -52,16 +65,6 @@ const Checkout = () => {
     }
 
     if (cartProducts.length > 0) {
-      trackLinkClick({
-        eventName: "continue to payment",
-        linkInfo: {
-          linkName: "continue to payment",
-          linkType: "form interaction",
-          linkPosition: "checkout shipping form",
-          linkURL: window.location.href,
-        },
-      });
-
       try {
         const checkout = await dispatch(
           createCheckout({
@@ -77,6 +80,23 @@ const Checkout = () => {
         }
 
         setCheckoutId(checkout._id);
+        pushDataLayerEvent({
+          event: "linkClick",
+          custData: buildCustomer(user),
+          shipping: {
+            shippingMethod: "standard",
+            shippingCountry: shippingAddress.country || "unknown",
+            shippingCity: shippingAddress.city || "unknown",
+          },
+          linkInfo: {
+            linkName: "shipping selected",
+            linkType: "checkout step",
+            linkPosition: "checkout shipping form",
+            linkURL: window.location.href,
+          },
+        });
+        trackPaymentSelection({ paymentMethod: "Paypal" });
+        trackOrderReview();
       } catch (error) {
         const message =
           error?.message || "Unable to continue to payment. Please try again.";
@@ -96,8 +116,13 @@ const Checkout = () => {
     }
   };
   const handlePaymentSuccess = async (details) => {
+    if (!checkoutId) return;
+
+    setPaymentLoading(true);
+    setCheckoutSubmitError("");
+
     try {
-      await axios.put(
+      const { data: paidCheckout } = await axios.put(
         apiUrl(`/api/checkout/${checkoutId}/pay`),
         { paymentStatus: "paid", paymentDetails: details },
         {
@@ -107,9 +132,16 @@ const Checkout = () => {
         }
       );
 
-      await handleFinalizeCheckout(checkoutId);
+      await handleFinalizeCheckout(checkoutId, paidCheckout);
     } catch (error) {
-      console.log(error);
+      const message =
+        error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        error?.message ||
+        "Payment was captured, but we could not complete your order.";
+      setCheckoutSubmitError(message);
+      toast.error(message);
+      setPaymentLoading(false);
     }
   };
 
@@ -129,9 +161,9 @@ const Checkout = () => {
     navigate("/order-failure");
   };
 
-  const handleFinalizeCheckout = async (checkoutId) => {
+  const handleFinalizeCheckout = async (checkoutId, paidCheckout) => {
     try {
-      await axios.post(
+      const { data: order } = await axios.post(
         apiUrl(`/api/checkout/${checkoutId}/finalize`),
         {},
         {
@@ -141,9 +173,29 @@ const Checkout = () => {
         }
       );
 
+      const confirmedOrder = {
+        ...(paidCheckout || {}),
+        ...(order || {}),
+        checkoutItems: order?.orderItems || paidCheckout?.checkoutItems || [],
+        orderItems: order?.orderItems || paidCheckout?.checkoutItems || [],
+        checkoutId,
+        orderId: order?._id,
+        isPaid: true,
+        paymentStatus: "paid",
+      };
+
+      dispatch(setCheckout(confirmedOrder));
+      sessionStorage.setItem("lastConfirmedOrder", JSON.stringify(confirmedOrder));
       navigate("/order-confirmation");
     } catch (error) {
-      console.error(error);
+      const message =
+        error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        error?.message ||
+        "Unable to finalize your order. Please contact support.";
+      setCheckoutSubmitError(message);
+      toast.error(message);
+      setPaymentLoading(false);
     }
   };
   if (loading) return <p>Loading Cart...</p>;
@@ -290,53 +342,58 @@ const Checkout = () => {
                 data-analytics-name="continue to payment"
                 data-analytics-type="form interaction"
                 data-analytics-position="checkout shipping form"
-                data-analytics-skip="true"
                 className="w-full bg-black text-white py-3 rounded disabled:cursor-not-allowed disabled:bg-gray-400"
               >
                 {checkoutLoading ? "Continuing..." : "Continue to Payment"}
               </button>
             ) : (
               <div>
-                <h3 className="text-lg mb-4">Pay With Paypal</h3>
-                <PayPalButton
-                  amount={cart.totalPrice}
-                  onSuccess={handlePaymentSuccess}
-                  onError={() => {
-                    alert("Payment failed. Try again.");
-                  }}
-                />
-                  {isLocalBackend ? (
-                    <div className="mt-6 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4">
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-700 mb-3">
-                        Local test actions
-                      </h4>
-                      <div className="flex flex-col sm:flex-row gap-3">
-                        <button
-                          type="button"
-                          onClick={handleContinueToBuy}
-                          data-analytics-name="continue to buy"
-                          data-analytics-type="cta"
-                          data-analytics-position="checkout payment"
-                          className="w-full rounded bg-black px-4 py-3 text-white font-semibold hover:bg-gray-800 transition"
-                        >
-                          Continue to Buy
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleOrderFailure}
-                          data-analytics-name="order failure"
-                          data-analytics-type="cta"
-                          data-analytics-position="checkout payment"
-                          className="w-full rounded border border-red-500 px-4 py-3 text-red-600 font-semibold hover:bg-red-50 transition"
-                        >
-                          Order Failure
-                        </button>
-                      </div>
-                      <p className="mt-3 text-xs text-gray-500">
-                        Use these buttons to simulate success or failure during local testing.
-                      </p>
+                <h3 className="text-lg mb-4">
+                  {isLocalBackend ? "Complete Test Payment" : "Pay With Paypal"}
+                </h3>
+                {isLocalBackend ? (
+                  <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4">
+                    <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-700 mb-3">
+                      Local test actions
+                    </h4>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <button
+                        type="button"
+                        onClick={handleContinueToBuy}
+                        disabled={paymentLoading}
+                        data-analytics-name="continue to buy"
+                        data-analytics-type="cta"
+                        data-analytics-position="checkout payment"
+                        className="w-full rounded bg-black px-4 py-3 text-white font-semibold hover:bg-gray-800 transition disabled:cursor-not-allowed disabled:bg-gray-400"
+                      >
+                        {paymentLoading ? "Completing..." : "Continue to Buy"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleOrderFailure}
+                        data-analytics-name="order failure"
+                        data-analytics-type="cta"
+                        data-analytics-position="checkout payment"
+                        className="w-full rounded border border-red-500 px-4 py-3 text-red-600 font-semibold hover:bg-red-50 transition"
+                      >
+                        Order Failure
+                      </button>
                     </div>
-                  ) : null}
+                    <p className="mt-3 text-xs text-gray-500">
+                      Use these buttons to simulate success or failure during local testing.
+                    </p>
+                  </div>
+                ) : (
+                  <PayPalButton
+                    amount={cart.totalPrice}
+                    onSuccess={handlePaymentSuccess}
+                    onError={() => {
+                      const message = "Payment failed. Please try again.";
+                      setCheckoutSubmitError(message);
+                      toast.error(message);
+                    }}
+                  />
+                )}
               </div>
             )}
           </div>

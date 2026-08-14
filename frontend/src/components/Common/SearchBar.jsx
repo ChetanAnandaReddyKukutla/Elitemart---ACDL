@@ -53,7 +53,6 @@ const SearchBar = () => {
               data-analytics-name="search submit"
               data-analytics-type="form interaction"
               data-analytics-position="header search"
-              data-analytics-skip="true"
               className="absolute cursor-pointer right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800 "
             >
               <HiMagnifyingGlass className="h-6 w-6 " />

@@ -46,7 +46,16 @@ const checkoutSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setCheckout: (state, action) => {
+      state.checkout = action.payload;
+      state.error = null;
+    },
+    clearCheckout: (state) => {
+      state.checkout = null;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createCheckout.pending, (state) => {
@@ -67,4 +76,5 @@ const checkoutSlice = createSlice({
   },
 });
 
+export const { setCheckout, clearCheckout } = checkoutSlice.actions;
 export default checkoutSlice.reducer;

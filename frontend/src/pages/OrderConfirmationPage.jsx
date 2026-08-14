@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../redux/slices/cartSlice";
@@ -8,18 +8,46 @@ const OrderConfirmationPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { checkout } = useSelector((state) => state.checkout);
+  const storedOrder = useMemo(() => {
+    try {
+      return JSON.parse(sessionStorage.getItem("lastConfirmedOrder"));
+    } catch {
+      return null;
+    }
+  }, []);
+  const confirmedOrder = checkout || storedOrder;
+  const orderItems = useMemo(() => {
+    if (Array.isArray(confirmedOrder?.checkoutItems)) {
+      return confirmedOrder.checkoutItems;
+    }
+
+    if (Array.isArray(confirmedOrder?.orderItems)) {
+      return confirmedOrder.orderItems;
+    }
+
+    return [];
+  }, [confirmedOrder]);
+  const shippingAddress = confirmedOrder?.shippingAddress || {};
+  const orderDate = confirmedOrder?.createdAt || confirmedOrder?.paidAt || Date.now();
+  const orderId = confirmedOrder?.orderId || confirmedOrder?._id;
 
   // Clear the cart when order is confirmed
   useEffect(() => {
-    if (checkout && checkout._id) {
-      trackPurchase({ checkout });
+    if (confirmedOrder && orderId) {
+      trackPurchase({
+        checkout: {
+          ...confirmedOrder,
+          _id: orderId,
+          checkoutItems: orderItems,
+        },
+      });
       dispatch(clearCart());
-      localStorage.removeItem("cart")
+      localStorage.removeItem("cart");
     }else{
-      navigate("/my-orders")
+      navigate("/my-orders");
     }
 
-  },[checkout,navigate,dispatch]);
+  },[confirmedOrder, orderId, orderItems, navigate, dispatch]);
 
   const calculateEstimatedDelivery = (createdAt) => {
     const orderDate = new Date(createdAt);
@@ -31,27 +59,27 @@ const OrderConfirmationPage = () => {
       <h1 className="text-4xl font-bold text-center text-emerald-700 mb-8">
         Thank You For Your Order!
       </h1>
-      {checkout && (
+      {confirmedOrder && (
         <div className="p-6 rounded-lg border">
           <div className="flex justify-between mb-20">
             {/* Order Id and Date */}
             <div>
-              <h2 className="text-xl font-semibold">Order ID:{checkout._id}</h2>
+              <h2 className="text-xl font-semibold">Order ID:{orderId}</h2>
               <p className="text-gray-500">
-                Order date = {new Date(checkout.createdAt).toLocaleDateString()}
+                Order date = {new Date(orderDate).toLocaleDateString()}
               </p>
             </div>
             {/* Estimated Delivery */}
             <div>
               <p className="text-emerald-700 text-sm">
                 Estimated Delivery:
-                {calculateEstimatedDelivery(checkout.createdAt)}
+                {calculateEstimatedDelivery(orderDate)}
               </p>
             </div>
           </div>
           {/* Ordered Items */}
           <div className="mb-20">
-            {checkout.checkoutItems.map((item) => (
+            {orderItems.map((item) => (
               <div key={item.productId} className="flex items-center mb-4">
                 <img
                   src={item.image}
@@ -75,17 +103,16 @@ const OrderConfirmationPage = () => {
           <div className="grid grid-cols-2 gap-8">
             <div>
               <h4 className="text-lg font-semibold mb-2">Payment</h4>
-              <p className="text-gray-600">Paypal</p>
+              <p className="text-gray-600">{confirmedOrder.paymentMethod || "Paypal"}</p>
             </div>
             {/* Delivery Info */}
             <div>
               <h4 className="text-lg font-semibold mb-2">Delivery</h4>
               <p className="text-gray-600">
-                {checkout.shippingAddress.address}
+                {shippingAddress.address}
               </p>
               <p className="text-gray-600">
-                {checkout.shippingAddress.city},{" "}
-                {checkout.shippingAddress.country}
+                {shippingAddress.city}, {shippingAddress.country}
               </p>
             </div>
           </div>
