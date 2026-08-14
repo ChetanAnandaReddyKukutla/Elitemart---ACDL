@@ -3,28 +3,7 @@
 > vite --host
 
 
-  [32m[1mVITE[22m v6.3.2[39m  [2mready in [0m[1m2051[22m[2m[0m ms[22m
+  [32m[1mVITE[22m v6.3.2[39m  [2mready in [0m[1m1191[22m[2m[0m ms[22m
 
   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3000[22m/[39m
-  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.6:[1m3000[22m/[39m
-[2m4:17:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.jsx[22m
-[2m4:17:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/index.css[22m
-[2m4:17:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Products/ProductGrid.jsx, /src/index.css[22m
-[2m4:17:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Products/NewArrivals.jsx, /src/index.css[22m
-[2m4:17:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Products/ProductDetails.jsx, /src/index.css[22m
-[2m4:18:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Cart\CartContents.jsx, /src/index.css[22m
-[2m4:18:17 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Layout\CartDrawer.jsx, /src/index.css[22m
-[2m4:18:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Common\SearchBar.jsx, /src/index.css[22m
-[2m4:18:44 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Cart/Checkout.jsx, /src/index.css[22m
-[2m4:18:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/OrderConfirmationPage.jsx, /src/index.css[22m
-[2m4:19:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Layout/Hero.jsx, /src/index.css[22m
-[2m4:19:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Common\Navbar.jsx, /src/index.css[22m
-[2m4:19:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Common/Footer.jsx, /src/index.css[22m
-[2m4:19:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Layout\Topbar.jsx, /src/index.css[22m
-[2m4:19:50 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Common\Navbar.jsx, /src/index.css[22m
-[2m4:19:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Products/ProductDetails.jsx, /src/index.css[22m
-[2m4:20:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/utils/analytics.js[22m
-[2m5:04:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/utils/analytics.js[22m
-[2m5:04:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/utils/analytics.js[22m
-[2m5:19:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/utils/analytics.js[22m
-[2m5:19:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\ChetanKukutla\OneDrive - Digital Web Analytics and Optimization LLP\Documents\EliteMart\EliteMart-main\frontend\src\components\Common\Navbar.jsx, /src/index.css[22m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.15:[1m3000[22m/[39m

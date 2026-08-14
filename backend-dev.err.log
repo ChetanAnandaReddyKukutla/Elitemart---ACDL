@@ -1,39 +1,3 @@
 Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
 Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
 Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Error in protectRoute: jwt expired
-Error in protectRoute: jwt expired
-Error in protectRoute: jwt malformed
-Error in protectRoute: jwt malformed
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Primary MongoDB URI failed. Retrying with local MongoDB at mongodb://127.0.0.1:27017/elitemart
-Database connection failed: connect ECONNREFUSED 127.0.0.1:27017
-Starting backend without database connection (development mode).
-Error in protectRoute: jwt expired
-Error in protectRoute: jwt expired
