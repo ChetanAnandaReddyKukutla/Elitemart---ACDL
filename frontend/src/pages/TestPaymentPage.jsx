@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { apiUrl } from "../config/api";
 import axios from "axios";
-import { setCheckout } from "../../redux/slices/checkoutSlice";
+import { setCheckout } from "../redux/slices/checkoutSlice";
 
 const TestPaymentPage = () => {
   const navigate = useNavigate();
