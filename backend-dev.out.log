@@ -29,3 +29,28 @@ Error while connecting to local fallback database  MongooseServerSelectionError:
   code: undefined
 }
 🚀 Server is running at http://localhost:5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Error while connecting to local fallback database  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\ChetanKukutla\EliteMart-main-local\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.openUri (C:\Users\ChetanKukutla\EliteMart-main-local\node_modules\mongoose\lib\connection.js:1096:11)
+    at async connectDB (file:///C:/Users/ChetanKukutla/EliteMart-main-local/backend/config/db.js:22:9)
+    at async startServer (file:///C:/Users/ChetanKukutla/EliteMart-main-local/backend/server.js:102:5) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+🚀 Server is running at http://localhost:5000
