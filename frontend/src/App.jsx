@@ -11,6 +11,7 @@ import ProductDetails from "./components/Products/ProductDetails";
 import Checkout from "./components/Cart/Checkout";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import OrderFailurePage from "./pages/OrderFailurePage";
+import TestPaymentPage from "./pages/TestPaymentPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
 import AdminLayout from "./components/Admin/AdminLayout";
@@ -43,6 +44,7 @@ const App = () => {
             />
             <Route path="product/:id" element={<ProductDetails />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="test-payment" element={<TestPaymentPage />} />
             <Route
               path="order-confirmation"
               element={<OrderConfirmationPage />}

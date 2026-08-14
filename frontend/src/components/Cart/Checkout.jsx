@@ -348,42 +348,8 @@ const Checkout = () => {
               </button>
             ) : (
               <div>
-                <h3 className="text-lg mb-4">
-                  {isLocalBackend ? "Complete Test Payment" : "Pay With Paypal"}
-                </h3>
-                {isLocalBackend ? (
-                  <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4">
-                    <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-700 mb-3">
-                      Local test actions
-                    </h4>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <button
-                        type="button"
-                        onClick={handleContinueToBuy}
-                        disabled={paymentLoading}
-                        data-analytics-name="continue to buy"
-                        data-analytics-type="cta"
-                        data-analytics-position="checkout payment"
-                        className="w-full rounded bg-black px-4 py-3 text-white font-semibold hover:bg-gray-800 transition disabled:cursor-not-allowed disabled:bg-gray-400"
-                      >
-                        {paymentLoading ? "Completing..." : "Continue to Buy"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleOrderFailure}
-                        data-analytics-name="order failure"
-                        data-analytics-type="cta"
-                        data-analytics-position="checkout payment"
-                        className="w-full rounded border border-red-500 px-4 py-3 text-red-600 font-semibold hover:bg-red-50 transition"
-                      >
-                        Order Failure
-                      </button>
-                    </div>
-                    <p className="mt-3 text-xs text-gray-500">
-                      Use these buttons to simulate success or failure during local testing.
-                    </p>
-                  </div>
-                ) : (
+                <h3 className="text-lg mb-4">Pay With</h3>
+                <div className="flex flex-col gap-4">
                   <PayPalButton
                     amount={cart.totalPrice}
                     onSuccess={handlePaymentSuccess}
@@ -393,7 +359,16 @@ const Checkout = () => {
                       toast.error(message);
                     }}
                   />
-                )}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      navigate("/test-payment", { state: { checkoutId } })
+                    }
+                    className="w-full bg-gray-700 text-white py-3 rounded"
+                  >
+                    Continue with Test Payment
+                  </button>
+                </div>
               </div>
             )}
           </div>
